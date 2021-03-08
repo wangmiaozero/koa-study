@@ -1,8 +1,21 @@
+/*
+ * @Description: 
+ * @Version: 0.1
+ * @Autor: wangmiao
+ * @Date: 2021-03-07 23:14:03
+ * @LastEditors: wangmiao
+ * @LastEditTime: 2021-03-08 23:30:54
+ */
 const crypto = require("crypto"),
   jwt = require("jsonwebtoken");
 // TODO:使用数据库
 // 这里应该是用数据库存储，这里只是演示用
-let userList = [];
+let userList = [
+  {
+    name: 'tuziling84@gmail.com',
+    password: '0192023a7bbd73250516f069df18b500'
+  }
+];
 
 class UserController {
   // 用户注册
@@ -19,7 +32,7 @@ class UserController {
       name: data.name,
       password: crypto.createHash('md5').update(data.password).digest('hex')
     };
-    
+    console.log(user,'user')
     userList.push(user)
 
     return ctx.body = {
@@ -61,11 +74,13 @@ class UserController {
   }
   // 获取用户信息
   static async userinfo(ctx) {
+
     const data = ctx.state.user;
     return ctx.body = {
       code: "0",
       data: {
-        ...data
+        ...data,
+        ctx
       }
     }
   }

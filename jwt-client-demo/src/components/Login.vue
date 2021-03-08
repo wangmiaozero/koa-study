@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 0.1
+ * @Autor: wangmiao
+ * @Date: 2021-03-07 23:11:06
+ * @LastEditors: wangmiao
+ * @LastEditTime: 2021-03-08 22:10:57
+-->
 <template>
   <div class="login-container">
     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -23,8 +31,8 @@ export default {
     return {
       isLogin: true,
       ruleForm: {
-        name: "",
-        password: "",
+        name: "tuziling84@gmail.com",
+        password: "admin123",
       },
       rules: {
         name: [{ required: true, message: "请输入用户名", trigger: "blur" }],
